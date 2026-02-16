@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Luxury token defaults — edit in /docs/BRAND.md and keep in sync */
+:root{
+  /* Algarve luxury palette */
+  --c-bg: 250 248 244;        /* chalk */
+  --c-surface: 246 241 233;   /* travertine */
+  --c-ink: 19 27 32;          /* deep ink */
+  --c-muted: 108 116 120;     /* muted stone */
+  --c-accent: 9 71 74;        /* midnight teal */
+  --c-olive: 88 102 77;       /* eucalyptus */
+  --c-brass: 196 170 120;     /* champagne brass */
+
+  /* Motion */
+  --ease-lux: cubic-bezier(.2,.8,.2,1);
+  --dur-fast: 200ms;
+  --dur-med: 450ms;
+  --dur-slow: 800ms;
+
+  /* Layout */
+  --maxw: 1180px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: rgb(var(--c-ink));
+  background: rgb(var(--c-bg));
+}
+
+::selection{
+  background: rgb(var(--c-accent) / 0.18);
+}
