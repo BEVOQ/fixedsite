@@ -1,0 +1,21 @@
+name: Backend
+description: API, data, integration, or server-side tasks.
+title: "[Backend] "
+labels: ["backend"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: API / Data Contract
+      description: Request/response format, validation, and error handling expectations.
+  - type: textarea
+    id: security
+    attributes:
+      label: Security + Reliability Notes
+      description: Auth, secrets, rate limits, idempotency, monitoring.
