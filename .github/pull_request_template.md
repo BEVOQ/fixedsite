@@ -1,22 +1,40 @@
-## Task
-- [ ] T__ (link issue)
-
 ## Summary
-Describe what changed and why.
+- What changed?
+- Why now?
 
-## Screenshots / Preview
-- Vercel Preview: (link)
-- Screenshots/GIFs:
+## Linked Issue
+- Closes #
 
-## Checklist
-- [ ] Lint passes
-- [ ] Typecheck passes
-- [ ] Build passes
-- [ ] Docs updated (if needed)
-- [ ] Reduced motion respected
-- [ ] Mobile sanity check done
+## Preview
+- Vercel Preview URL:
 
-## How to test
-Steps:
-1)
-2)
+## Visual Evidence (required for UI changes)
+- Screenshots / recordings:
+
+## Quality Checklist
+### Performance
+- [ ] No unnecessary dependency additions
+- [ ] Route-level impact considered (LCP/CLS/INP risk)
+- [ ] Lighthouse plan or results attached for affected routes
+
+### SEO
+- [ ] Metadata updated or confirmed unchanged
+- [ ] Indexing assumptions checked (robots/sitemap/canonicals)
+- [ ] Heading hierarchy and internal links reviewed
+
+### Accessibility
+- [ ] Keyboard and focus states verified
+- [ ] Semantic labels/alt text included
+- [ ] `prefers-reduced-motion` respected
+
+### Engineering
+- [ ] `npm run lint`
+- [ ] `npm run typecheck`
+- [ ] `npm run test --if-present`
+- [ ] `npm run build`
+- [ ] Docs updated (if behavior/process changed)
+
+## Testing Notes
+1.
+2.
+3.

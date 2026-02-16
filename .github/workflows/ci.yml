@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,13 +19,16 @@ jobs:
           cache: npm
 
       - name: Install
-        run: npm install
+        run: npm ci
 
       - name: Lint
-        run: npm run lint
+        run: npm run lint --if-present
 
       - name: Typecheck
-        run: npm run typecheck
+        run: npm run typecheck --if-present
+
+      - name: Test
+        run: npm run test --if-present
 
       - name: Build
         run: npm run build

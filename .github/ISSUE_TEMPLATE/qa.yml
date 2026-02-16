@@ -1,0 +1,33 @@
+name: QA
+description: Bug verification, regression checks, and release readiness.
+title: "[QA] "
+labels: ["qa"]
+body:
+  - type: textarea
+    id: area
+    attributes:
+      label: Area Under Test
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction / Test Steps
+      placeholder: 1) ... 2) ... 3) ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs Actual
+    validations:
+      required: true
+  - type: checkboxes
+    id: env
+    attributes:
+      label: Environments Checked
+      options:
+        - label: Local dev
+        - label: Vercel preview
+        - label: Mobile viewport
+        - label: Reduced-motion mode

@@ -1,0 +1,24 @@
+name: UX/UI
+description: Visual or interaction design tasks.
+title: "[UX/UI] "
+labels: ["ux-ui"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What user problem or flow is this addressing?
+    validations:
+      required: true
+  - type: textarea
+    id: direction
+    attributes:
+      label: Creative Direction Alignment
+      description: Reference docs/CREATIVE_DIRECTION.md constraints this issue must follow.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      placeholder: Visual intent, breakpoints, motion behavior, reduced-motion behavior.
+    validations:
+      required: true

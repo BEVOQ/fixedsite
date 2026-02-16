@@ -1,0 +1,26 @@
+name: Frontend
+description: Component/page/client behavior implementation.
+title: "[Frontend] "
+labels: ["frontend"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should users be able to do/see after this work?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Files/routes/components expected to change.
+  - type: checkboxes
+    id: quality
+    attributes:
+      label: Quality Gates
+      options:
+        - label: Accessibility basics covered
+        - label: SEO implications reviewed
+        - label: Performance impact considered
+        - label: Added/updated tests where practical
