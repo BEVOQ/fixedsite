@@ -9,40 +9,30 @@ export function Navbar() {
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 12);
+    const onScroll = () => setSolid(window.scrollY > 18);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header
-      className={clsx(
-        "sticky top-0 z-50 transition-colors",
-        solid ? "bg-bg/80 backdrop-blur border-b border-black/10" : "bg-transparent"
-      )}
-    >
-      <div className="mx-auto px-5 py-4 flex items-center justify-between" style={{ maxWidth: "var(--maxw)" }}>
-        <Link href="/" className="tracking-tight font-medium">
+    <header className={clsx("sticky top-0 z-50 border-b transition-all", solid ? "border-black/10 bg-bg/85 backdrop-blur" : "border-transparent bg-transparent")}>
+      <div className="lux-shell flex items-center justify-between py-4">
+        <Link href="/" className="text-sm tracking-[0.08em] uppercase text-ink">
           {site.brand.name}
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm text-muted">
-          {site.nav.primary.map((i) => (
-            <Link key={i.href} href={i.href} className="hover:text-ink transition-colors">
-              {i.label}
+        <nav className="hidden items-center gap-7 text-sm text-muted md:flex">
+          {site.nav.primary.map((item) => (
+            <Link key={item.href} href={item.href} className="hover:text-ink">
+              {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <Link
-            href="/contact"
-            className="text-sm rounded-full px-4 py-2 border border-black/10 bg-surface hover:bg-white transition-colors"
-          >
-            {site.nav.cta}
-          </Link>
-        </div>
+        <Link href="/contact" className="rounded-full border border-black/15 bg-white/70 px-4 py-2 text-sm hover:bg-white">
+          {site.nav.cta}
+        </Link>
       </div>
     </header>
   );
