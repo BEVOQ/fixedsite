@@ -1,102 +1,130 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SectionHeader } from "@/components/SectionHeader";
-import { Hero } from "@/components/Hero";
-import { FocusShiftSection } from "@/components/FocusShiftSection";
-import { LightsOnImage } from "@/components/LightsOnImage";
-import { site } from "@/content/site";
+import { BeforeAfterBlock } from "@/components/BeforeAfterBlock";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { ProjectCard } from "@/components/ProjectCard";
+import { ServiceCard } from "@/components/ServiceCard";
+import { TestimonialBlock } from "@/components/TestimonialBlock";
+import { projects, services, site } from "@/content/site";
+import { buildMetadata } from "@/content/seo";
+
+export const metadata = buildMetadata("Home", site.description, "/");
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: site.name,
+  description: site.description,
+  telephone: site.contact.phone,
+  email: site.contact.email,
+  areaServed: site.serviceArea,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: site.contact.addressLocality,
+    addressCountry: site.contact.addressCountry
+  }
+};
 
 export default function Home() {
   return (
-    <div>
-      <Hero
-        title={site.hero.title}
-        subtitle={site.hero.subtitle}
-        ctaPrimary={{ label: site.hero.ctaPrimaryLabel, href: "/contact" }}
-        ctaSecondary={{ label: site.hero.ctaSecondaryLabel, href: "/portfolio" }}
-      />
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <section className="relative overflow-hidden">
+        <Image src="/demo/hero.svg" alt="Luxury Algarve construction detail" fill priority className="object-cover" sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-bg" />
+        <div className="container-shell relative py-24 md:py-32">
+          <p className="text-xs uppercase tracking-[0.22em] text-white/80">{site.hero.eyebrow}</p>
+          <h1 className="mt-5 max-w-3xl text-5xl leading-[0.95] text-white md:text-7xl">{site.hero.title}</h1>
+          <p className="mt-6 max-w-2xl text-base text-white/80 md:text-lg">{site.hero.subtitle}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/contact" className="btn-primary">Start your project</Link>
+            <Link href="/projects" className="btn-secondary">View featured work</Link>
+          </div>
+        </div>
+      </section>
 
-      <section className="mx-auto px-5 py-16" style={{ maxWidth: "var(--maxw)" }}>
-        <SectionHeader
-          eyebrow="Services"
-          title="Outdoor spaces, interiors, and finishes — crafted with restraint."
-          subtitle="Landscaping, renovations, and microcement executed with premium materials and clean detailing."
-        />
+      <section className="container-shell py-16">
+        <ul className="grid gap-4 md:grid-cols-3">
+          {site.trustSignals.map((signal) => (
+            <li key={signal} className="card p-5 text-sm text-muted">{signal}</li>
+          ))}
+        </ul>
+      </section>
 
+      <section className="container-shell py-16">
+        <div className="section-header">
+          <p className="eyebrow">Services</p>
+          <h2 className="h2">A focused team for elegant, high-performing spaces.</h2>
+        </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {site.servicesPreview.map((s) => (
-            <Link
-              key={s.title}
-              href={s.href}
-              className="group rounded-2xl bg-surface shadow-soft overflow-hidden border border-black/5"
-            >
-              <div className="relative h-44">
-                <Image
-                  src={s.image}
-                  alt={s.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  priority={false}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-medium tracking-tight">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted leading-relaxed">{s.desc}</p>
-                <div className="mt-4 text-sm inline-flex items-center gap-2 text-accent">
-                  Explore <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </div>
-              </div>
-            </Link>
+          {services.map((service) => (
+            <ServiceCard key={service.slug} title={service.name} description={service.short} href={`/services/${service.slug}`} image={service.image} />
           ))}
         </div>
       </section>
 
-      <section className="mx-auto px-5 pb-4" style={{ maxWidth: "var(--maxw)" }}>
-        <SectionHeader
-          eyebrow="Interactive"
-          title="Tap to reveal lighting — premium detail, not gimmick."
-          subtitle="Replace the sample images with your real 'lights off' / 'lights on' pair."
-        />
-      </section>
-
-      <section className="mx-auto px-5 pb-16" style={{ maxWidth: "var(--maxw)" }}>
-        <LightsOnImage
-          width={1400}
-          height={800}
-          alt="Outdoor lighting reveal demo"
-          offSrc="/demo/lights-off.jpg"
-          onSrc="/demo/lights-on.jpg"
-          hotspots={[
-            { id: "path", x: 0.68, y: 0.63, radius: 0.18 },
-            { id: "pool", x: 0.35, y: 0.62, radius: 0.14 }
-          ]}
-        />
-      </section>
-
-      <section className="mx-auto px-5 pb-20" style={{ maxWidth: "var(--maxw)" }}>
-        <SectionHeader
-          eyebrow="Scroll"
-          title="Focus-shift portfolio teaser"
-          subtitle="As you scroll, the center card becomes crisp and active."
-        />
-        <div className="mt-10">
-          <FocusShiftSection items={site.focusShiftDemo} />
+      <section className="container-shell py-16">
+        <div className="section-header">
+          <p className="eyebrow">Featured projects</p>
+          <h2 className="h2">Selected transformations across the Algarve.</h2>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} title={project.title} summary={project.summary} image={project.image} category={project.category} href={`/projects/${project.slug}`} />
+          ))}
         </div>
       </section>
 
-      <footer className="border-t border-black/10">
-        <div className="mx-auto px-5 py-10 text-sm text-muted" style={{ maxWidth: "var(--maxw)" }}>
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <div>{site.footer.brandLine}</div>
-            <div className="flex gap-4">
-              <Link className="hover:text-ink transition-colors" href="/privacy">Privacy</Link>
-              <Link className="hover:text-ink transition-colors" href="/contact">Contact</Link>
-            </div>
+      <section className="container-shell py-16">
+        <div className="section-header">
+          <p className="eyebrow">Process</p>
+          <h2 className="h2">Measured delivery from brief to handover.</h2>
+        </div>
+        <ol className="mt-8 grid gap-4 md:grid-cols-4">
+          {["Site visit", "Detailed proposal", "Build and reporting", "Final walkthrough"].map((step, i) => (
+            <li key={step} className="card p-5 text-sm"><span className="mr-2 text-muted">0{i + 1}</span>{step}</li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="container-shell py-16">
+        <div className="section-header">
+          <p className="eyebrow">Before / After</p>
+          <h2 className="h2">Clear proof of transformation.</h2>
+        </div>
+        <div className="mt-8">
+          <BeforeAfterBlock beforeSrc="/demo/lights-off.svg" afterSrc="/demo/lights-on.svg" />
+        </div>
+      </section>
+
+      <section className="container-shell py-16">
+        <div className="grid gap-6 md:grid-cols-2">
+          {site.testimonials.map((testimonial) => (
+            <TestimonialBlock key={testimonial.quote} quote={testimonial.quote} author={testimonial.author} location={testimonial.location} />
+          ))}
+        </div>
+      </section>
+
+      <section className="container-shell py-16">
+        <div className="section-header">
+          <p className="eyebrow">FAQ</p>
+          <h2 className="h2">Answers before your first visit.</h2>
+        </div>
+        <div className="mt-8">
+          <FAQAccordion items={[...site.faqs]} />
+        </div>
+      </section>
+
+      <section className="container-shell pb-20">
+        <div className="card bg-ink p-10 text-white">
+          <h2 className="text-4xl">Planning a project in the Algarve?</h2>
+          <p className="mt-3 max-w-2xl text-white/75">Book a fast consultation by WhatsApp or send your brief for a structured proposal.</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href={site.contact.whatsapp} className="btn-primary">Message on WhatsApp</a>
+            <Link href="/contact" className="btn-secondary border-white/30 text-white">Send your brief</Link>
           </div>
         </div>
-      </footer>
-    </div>
+      </section>
+    </>
   );
 }

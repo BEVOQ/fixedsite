@@ -1,0 +1,31 @@
+name: UX/UI Brief
+description: Design direction, wireframe goals, premium copy intent, and acceptance criteria.
+title: "UX/UI: "
+labels: ["ux-ui"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / opportunity
+      placeholder: What user outcome should this design improve?
+    validations:
+      required: true
+  - type: textarea
+    id: wire
+    attributes:
+      label: Wireframe goals
+      description: Outline sections, hierarchy, interaction hints.
+    validations:
+      required: true
+  - type: textarea
+    id: copy
+    attributes:
+      label: Copy goals
+      description: Tone, key message, CTA intent.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: e.g., mobile-first layout, luxury style, reduced motion support.
+    validations:
+      required: true

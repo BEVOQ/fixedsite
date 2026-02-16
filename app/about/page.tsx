@@ -1,18 +1,26 @@
-import { SectionHeader } from "@/components/SectionHeader";
-import { site } from "@/content/site";
+import { buildMetadata } from "@/content/seo";
 
-export default function Page() {
+export const metadata = buildMetadata(
+  "About",
+  "Meet the Algarve construction specialists behind Luso Atelier Build and our approach to premium project execution.",
+  "/about"
+);
+
+export default function AboutPage() {
   return (
-    <div className="mx-auto px-5 py-16" style={ maxWidth: "var(--maxw)" }>
-      <SectionHeader eyebrow="About" title="About" subtitle="Replace this stub with your final layout + copy." />
-      <div className="mt-8 rounded-2xl border border-black/10 bg-surface shadow-soft p-6">
-        <p className="text-sm text-muted leading-relaxed">
-          This is a placeholder. Use the agent tasks to generate final copy, sections, and components.
-        </p>
-        <p className="mt-4 text-sm">
-          Brand: <span className="text-muted">{site.brand.name}</span>
-        </p>
+    <section className="container-shell py-16">
+      <p className="eyebrow">About</p>
+      <h1 className="h1 mt-4">A disciplined team built around detail and trust.</h1>
+      <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="card p-7 text-muted">
+          We are a local Algarve team combining landscaping, premium handyman operations, and specialist microcement expertise.
+          Our workflow is intentionally transparent: scoped proposals, predictable timelines, and meticulous site standards.
+        </div>
+        <div className="card p-7 text-muted">
+          Placeholder content block for founder story, certifications, insurance details, and partner network. Replace this with real
+          credibility signals as assets become available.
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

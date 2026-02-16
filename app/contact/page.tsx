@@ -1,18 +1,35 @@
-import { SectionHeader } from "@/components/SectionHeader";
+import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/content/site";
+import { buildMetadata } from "@/content/seo";
 
-export default function Page() {
+export const metadata = buildMetadata(
+  "Contact",
+  "Book a consultation for landscaping, handyman, or microcement works in the Algarve.",
+  "/contact"
+);
+
+export default function ContactPage() {
   return (
-    <div className="mx-auto px-5 py-16" style={ maxWidth: "var(--maxw)" }>
-      <SectionHeader eyebrow="Contact" title="Contact" subtitle="Replace this stub with your final layout + copy." />
-      <div className="mt-8 rounded-2xl border border-black/10 bg-surface shadow-soft p-6">
-        <p className="text-sm text-muted leading-relaxed">
-          This is a placeholder. Use the agent tasks to generate final copy, sections, and components.
-        </p>
-        <p className="mt-4 text-sm">
-          Brand: <span className="text-muted">{site.brand.name}</span>
-        </p>
+    <section className="container-shell py-16">
+      <p className="eyebrow">Contact</p>
+      <h1 className="h1 mt-4">Fast route to scope, schedule, and pricing.</h1>
+      <div className="mt-10 grid gap-8 md:grid-cols-2">
+        <div className="space-y-6">
+          <div className="card p-6">
+            <p className="text-sm text-muted">WhatsApp (fastest)</p>
+            <a className="mt-2 inline-flex text-lg font-medium focus-ring" href={site.contact.whatsapp}>
+              Start a WhatsApp chat
+            </a>
+          </div>
+          <div className="card p-6">
+            <p className="text-sm text-muted">Email</p>
+            <a className="mt-2 inline-flex text-lg font-medium focus-ring" href={`mailto:${site.contact.email}`}>
+              {site.contact.email}
+            </a>
+          </div>
+        </div>
+        <ContactForm />
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,22 +1,33 @@
-## Task
-- [ ] T__ (link issue)
-
 ## Summary
-Describe what changed and why.
+- What changed?
+- Why now?
 
-## Screenshots / Preview
-- Vercel Preview: (link)
-- Screenshots/GIFs:
+## Linked issues
+- Closes #
 
-## Checklist
-- [ ] Lint passes
-- [ ] Typecheck passes
-- [ ] Build passes
-- [ ] Docs updated (if needed)
-- [ ] Reduced motion respected
-- [ ] Mobile sanity check done
+## Preview
+- Vercel preview URL:
+- Screenshots (desktop/mobile):
 
-## How to test
-Steps:
-1)
-2)
+## Review checklist
+### Performance / Core Web Vitals
+- [ ] Avoided unnecessary client JS
+- [ ] Optimized images and font usage
+- [ ] Checked for obvious CLS/LCP regressions
+
+### SEO
+- [ ] Page-level title/description/canonical updated (if needed)
+- [ ] OG metadata updated (if needed)
+- [ ] Structured data valid (if added/changed)
+
+### Accessibility
+- [ ] Keyboard nav and focus states verified
+- [ ] Forms have labels and helpful states
+- [ ] Motion respects `prefers-reduced-motion`
+
+### Quality & Security
+- [ ] `npm run lint` passes
+- [ ] `npm run typecheck` passes
+- [ ] `npm run build` passes
+- [ ] Input validation and basic abuse mitigation reviewed
+- [ ] Docs updated where workflow or behavior changed

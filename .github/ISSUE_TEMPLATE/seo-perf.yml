@@ -1,0 +1,23 @@
+name: SEO & Performance
+description: Search discoverability and performance improvements.
+title: "SEO/Perf: "
+labels: ["seo", "performance"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      placeholder: Which metric/page is targeted?
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Checks and benchmarks
+      placeholder: Lighthouse, CWV, metadata, indexing checks.
+  - type: textarea
+    id: ac
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true

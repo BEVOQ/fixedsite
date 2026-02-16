@@ -1,0 +1,23 @@
+name: Frontend Task
+description: UI implementation task for Next.js components/pages.
+title: "Frontend: "
+labels: ["frontend"]
+body:
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      placeholder: Which pages/components should be changed?
+    validations:
+      required: true
+  - type: textarea
+    id: technical
+    attributes:
+      label: Technical notes
+      description: App Router constraints, data shape, edge cases.
+  - type: textarea
+    id: ac
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true

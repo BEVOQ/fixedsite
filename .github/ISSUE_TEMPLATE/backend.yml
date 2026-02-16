@@ -1,0 +1,23 @@
+name: Backend Task
+description: API route, validation, integrations, or infrastructure behavior.
+title: "Backend: "
+labels: ["backend"]
+body:
+  - type: textarea
+    id: endpoint
+    attributes:
+      label: Endpoint / capability
+      placeholder: Which route/service is in scope?
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation and abuse mitigation
+      placeholder: Required fields, rate limit, honeypot, etc.
+  - type: textarea
+    id: ac
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true

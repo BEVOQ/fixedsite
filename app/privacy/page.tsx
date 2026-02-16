@@ -1,18 +1,14 @@
-import { SectionHeader } from "@/components/SectionHeader";
-import { site } from "@/content/site";
+import { buildMetadata } from "@/content/seo";
 
-export default function Page() {
+export const metadata = buildMetadata("Privacy", "Privacy policy and contact data handling for Luso Atelier Build.", "/privacy");
+
+export default function PrivacyPage() {
   return (
-    <div className="mx-auto px-5 py-16" style={ maxWidth: "var(--maxw)" }>
-      <SectionHeader eyebrow="Privacy Policy" title="Privacy Policy" subtitle="Replace this stub with your final layout + copy." />
-      <div className="mt-8 rounded-2xl border border-black/10 bg-surface shadow-soft p-6">
-        <p className="text-sm text-muted leading-relaxed">
-          This is a placeholder. Use the agent tasks to generate final copy, sections, and components.
-        </p>
-        <p className="mt-4 text-sm">
-          Brand: <span className="text-muted">{site.brand.name}</span>
-        </p>
+    <section className="container-shell py-16">
+      <h1 className="h1">Privacy Policy</h1>
+      <div className="card mt-8 p-8 text-sm text-muted">
+        Placeholder policy copy. Replace with legal text covering data collection, storage, processing, and contact-form retention.
       </div>
-    </div>
+    </section>
   );
 }

@@ -2,36 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Luxury token defaults — edit in /docs/BRAND.md and keep in sync */
-:root{
-  /* Algarve luxury palette */
-  --c-bg: 250 248 244;        /* chalk */
-  --c-surface: 246 241 233;   /* travertine */
-  --c-ink: 19 27 32;          /* deep ink */
-  --c-muted: 108 116 120;     /* muted stone */
-  --c-accent: 9 71 74;        /* midnight teal */
-  --c-olive: 88 102 77;       /* eucalyptus */
-  --c-brass: 196 170 120;     /* champagne brass */
-
-  /* Motion */
-  --ease-lux: cubic-bezier(.2,.8,.2,1);
-  --dur-fast: 200ms;
-  --dur-med: 450ms;
-  --dur-slow: 800ms;
-
-  /* Layout */
-  --maxw: 1180px;
+:root {
+  --c-bg: 247 244 238;
+  --c-ink: 18 24 29;
+  --c-muted: 95 104 110;
+  --c-accent: 27 75 79;
+  --c-surface: 242 237 229;
+  --maxw: 1160px;
 }
 
-html, body {
-  height: 100%;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
-  color: rgb(var(--c-ink));
   background: rgb(var(--c-bg));
+  color: rgb(var(--c-ink));
 }
 
-::selection{
-  background: rgb(var(--c-accent) / 0.18);
+@layer components {
+  .container-shell {
+    @apply mx-auto w-full max-w-[var(--maxw)] px-5;
+  }
+
+  .focus-ring {
+    @apply rounded outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply focus-ring inline-flex items-center justify-center rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white transition hover:bg-ink/90;
+  }
+
+  .btn-secondary {
+    @apply focus-ring inline-flex items-center justify-center rounded-full border border-black/20 px-5 py-2.5 text-sm font-medium transition hover:border-black/40;
+  }
+
+  .card {
+    @apply rounded-2xl border border-black/10 bg-surface shadow-sm;
+  }
+
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .h1 {
+    @apply text-5xl leading-[0.96] tracking-tight md:text-6xl;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  }
+
+  .h2 {
+    @apply text-4xl leading-[1] tracking-tight md:text-5xl;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  }
+
+  .section-header {
+    @apply max-w-3xl;
+  }
 }
