@@ -1,0 +1,26 @@
+name: Lighthouse Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: "URL to audit (typically a Vercel preview URL)"
+        required: true
+        type: string
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.14.x
+
+      - name: Run Lighthouse CI
+        run: lhci autorun --collect.url="${{ inputs.target_url }}" --upload.target=temporary-public-storage

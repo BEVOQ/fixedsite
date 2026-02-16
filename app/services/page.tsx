@@ -1,18 +1,39 @@
-import { SectionHeader } from "@/components/SectionHeader";
-import { site } from "@/content/site";
+import { ServiceCard } from "@/components/ServiceCard";
+import { services } from "@/content/site";
+import { buildMetadata } from "@/content/seo";
 
-export default function Page() {
+export const metadata = buildMetadata(
+  "Services",
+  "Explore luxury landscaping, high-end handyman support, and microcement services in Algarve properties.",
+  "/services"
+);
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: services.map((service, index) => ({
+    "@type": "Service",
+    position: index + 1,
+    name: service.name,
+    description: service.short
+  }))
+};
+
+export default function ServicesPage() {
   return (
-    <div className="mx-auto px-5 py-16" style={ maxWidth: "var(--maxw)" }>
-      <SectionHeader eyebrow="Services" title="Services" subtitle="Replace this stub with your final layout + copy." />
-      <div className="mt-8 rounded-2xl border border-black/10 bg-surface shadow-soft p-6">
-        <p className="text-sm text-muted leading-relaxed">
-          This is a placeholder. Use the agent tasks to generate final copy, sections, and components.
-        </p>
-        <p className="mt-4 text-sm">
-          Brand: <span className="text-muted">{site.brand.name}</span>
-        </p>
+    <section className="container-shell py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <p className="eyebrow">Services</p>
+      <h1 className="h1 mt-4">Specialist delivery for premium Algarve homes.</h1>
+      <p className="mt-5 max-w-3xl text-muted">
+        Choose a focused service line or combine scopes into one coordinated project. Every package is designed around durability,
+        visual calm, and transparent execution.
+      </p>
+      <div className="mt-12 grid gap-6 md:grid-cols-3">
+        {services.map((service) => (
+          <ServiceCard key={service.slug} title={service.name} description={service.short} href={`/services/${service.slug}`} image={service.image} />
+        ))}
       </div>
-    </div>
+    </section>
   );
 }

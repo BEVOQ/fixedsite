@@ -1,0 +1,24 @@
+name: QA Validation
+description: Functional, accessibility, and regression QA pass.
+title: "QA: "
+labels: ["qa"]
+body:
+  - type: textarea
+    id: testplan
+    attributes:
+      label: Test plan
+      placeholder: Browsers, devices, routes, critical flows.
+    validations:
+      required: true
+  - type: textarea
+    id: findings
+    attributes:
+      label: Findings
+      placeholder: Bugs, severity, repro steps.
+  - type: textarea
+    id: ac
+    attributes:
+      label: Acceptance criteria
+      placeholder: e.g., no P1/P2 issues open, contact flow validated.
+    validations:
+      required: true
