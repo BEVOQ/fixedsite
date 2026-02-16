@@ -10,16 +10,15 @@ export const site = {
     primary: [
       { label: "Services", href: "/services" },
       { label: "Portfolio", href: "/portfolio" },
-      { label: "Microcement", href: "/microcement" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "About", href: "/about" }
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" }
     ],
     cta: "Request a site visit"
   },
   hero: {
     title: "Landscapes & finishes designed to feel inevitable.",
     subtitle:
-      "We shape outdoor environments, renovate interiors, and apply microcement surfaces with a calm, architectural approach — across the Algarve.",
+      "We shape outdoor environments, maintain premium properties, and apply microcement surfaces with a calm architectural approach across the Algarve.",
     image: "/demo/hero.jpg",
     ctaPrimaryLabel: "Request a site visit",
     ctaSecondaryLabel: "View projects"
@@ -28,19 +27,19 @@ export const site = {
     {
       title: "Landscaping",
       desc: "Outdoor living, lighting, irrigation, stonework — tailored to your villa and climate.",
-      href: "/services",
+      href: "/services/landscaping",
       image: "/demo/service-landscape.jpg"
     },
     {
-      title: "Renovations",
-      desc: "Refined upgrades, full remodels, and premium detailing — managed end-to-end.",
-      href: "/services",
-      image: "/demo/service-renovation.jpg"
+      title: "Handyman",
+      desc: "Reliable fixes and upgrades with premium execution for owners and rental managers.",
+      href: "/services/handyman",
+      image: "/demo/portfolio-3.jpg"
     },
     {
       title: "Microcement",
       desc: "Seamless walls and floors with a tactile finish — bathrooms, kitchens, terraces.",
-      href: "/microcement",
+      href: "/services/microcement-finishes",
       image: "/demo/service-microcement.jpg"
     }
   ],
@@ -62,6 +61,6 @@ export const site = {
     }
   ],
   footer: {
-    brandLine: "Luxury landscaping • renovations • microcement — Algarve, Portugal"
+    brandLine: "Luxury landscaping • handyman • microcement — Algarve, Portugal"
   }
 } as const;

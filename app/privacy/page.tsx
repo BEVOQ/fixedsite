@@ -1,17 +1,25 @@
+import type { Metadata } from "next";
 import { SectionHeader } from "@/components/SectionHeader";
-import { site } from "@/content/site";
+import { buildMetadata } from "@/lib/seo";
 
-export default function Page() {
+export const metadata: Metadata = buildMetadata({
+  title: "Privacy | Algarve Luxury Studio",
+  description: "How Algarve Luxury Studio handles website enquiries and personal information.",
+  path: "/privacy"
+});
+
+export default function PrivacyPage() {
   return (
-    <div className="mx-auto px-5 py-16" style={ maxWidth: "var(--maxw)" }>
-      <SectionHeader eyebrow="Privacy Policy" title="Privacy Policy" subtitle="Replace this stub with your final layout + copy." />
-      <div className="mt-8 rounded-2xl border border-black/10 bg-surface shadow-soft p-6">
-        <p className="text-sm text-muted leading-relaxed">
-          This is a placeholder. Use the agent tasks to generate final copy, sections, and components.
-        </p>
-        <p className="mt-4 text-sm">
-          Brand: <span className="text-muted">{site.brand.name}</span>
-        </p>
+    <div className="mx-auto px-5 py-16" style={{ maxWidth: "var(--maxw)" }}>
+      <SectionHeader
+        eyebrow="Privacy"
+        title="Privacy policy"
+        subtitle="We only collect details needed to respond to project enquiries and never sell personal data."
+      />
+      <div className="mt-8 rounded-2xl border border-black/10 bg-white p-6 text-sm text-muted leading-relaxed">
+        <p>When you submit the contact form, we store your name, email, and project message to respond to your request.</p>
+        <p className="mt-3">If email delivery is configured, your message is routed through our email provider with secure transport.</p>
+        <p className="mt-3">You can request deletion of your enquiry data at any time by contacting us directly.</p>
       </div>
     </div>
   );
