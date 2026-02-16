@@ -2,36 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Luxury token defaults — edit in /docs/BRAND.md and keep in sync */
-:root{
-  /* Algarve luxury palette */
-  --c-bg: 250 248 244;        /* chalk */
-  --c-surface: 246 241 233;   /* travertine */
-  --c-ink: 19 27 32;          /* deep ink */
-  --c-muted: 108 116 120;     /* muted stone */
-  --c-accent: 9 71 74;        /* midnight teal */
-  --c-olive: 88 102 77;       /* eucalyptus */
-  --c-brass: 196 170 120;     /* champagne brass */
+:root {
+  --c-bg: 249 247 241;
+  --c-surface: 243 238 228;
+  --c-ink: 17 24 29;
+  --c-muted: 98 108 116;
+  --c-accent: 8 69 74;
+  --c-olive: 84 98 74;
+  --c-brass: 192 167 122;
 
-  /* Motion */
-  --ease-lux: cubic-bezier(.2,.8,.2,1);
+  --ease-lux: cubic-bezier(0.2, 0.8, 0.2, 1);
   --dur-fast: 200ms;
   --dur-med: 450ms;
   --dur-slow: 800ms;
 
-  /* Layout */
+  --space-2xs: clamp(0.4rem, 0.35rem + 0.2vw, 0.55rem);
+  --space-xs: clamp(0.65rem, 0.55rem + 0.3vw, 0.85rem);
+  --space-sm: clamp(0.9rem, 0.8rem + 0.4vw, 1.2rem);
+  --space-md: clamp(1.2rem, 1rem + 0.7vw, 1.8rem);
+  --space-lg: clamp(1.8rem, 1.5rem + 1.2vw, 2.8rem);
+  --space-xl: clamp(2.4rem, 2rem + 2vw, 4.4rem);
+  --space-2xl: clamp(3.2rem, 2.8rem + 3.5vw, 6.8rem);
+
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.35rem;
+  --shadow-soft: 0 16px 40px rgba(22, 22, 22, 0.08);
+  --shadow-hairline: 0 1px 0 rgba(0, 0, 0, 0.08);
   --maxw: 1180px;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+  min-height: 100%;
 }
 
 body {
   color: rgb(var(--c-ink));
   background: rgb(var(--c-bg));
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
-::selection{
-  background: rgb(var(--c-accent) / 0.18);
+h1,
+h2,
+h3,
+.display-font {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  letter-spacing: -0.02em;
+}
+
+a,
+button {
+  transition: color var(--dur-fast) var(--ease-lux),
+    background-color var(--dur-fast) var(--ease-lux),
+    border-color var(--dur-fast) var(--ease-lux),
+    transform var(--dur-fast) var(--ease-lux);
+}
+
+::selection {
+  background: rgb(var(--c-accent) / 0.2);
+}
+
+.lux-shell {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.lux-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgb(0 0 0 / 0.06);
+  background: rgb(var(--c-surface));
+  box-shadow: var(--shadow-soft);
+}
+
+.lux-link {
+  color: rgb(var(--c-accent));
+  text-underline-offset: 0.2rem;
+}
+
+.lux-link:hover {
+  color: rgb(var(--c-ink));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-smooth-scroll="enabled"] {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
 }
