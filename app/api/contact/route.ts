@@ -14,11 +14,25 @@ const MAX_REQUESTS = 4;
 const requestLog = new Map<string, number[]>();
 
 function getClientIp(request: Request) {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) {
-    return forwarded.split(",")[0]?.trim() || "unknown";
+  const forwardedHeaders = [
+    request.headers.get("x-forwarded-for"),
+    request.headers.get("x-real-ip"),
+    request.headers.get("cf-connecting-ip")
+  ];
+
+  for (const headerValue of forwardedHeaders) {
+    if (headerValue) {
+      const candidate = headerValue.split(",")[0]?.trim();
+      if (candidate) {
+        return candidate;
+      }
+    }
   }
-  return "unknown";
+
+  const userAgent = request.headers.get("user-agent")?.trim() || "no-ua";
+  const acceptLanguage = request.headers.get("accept-language")?.trim() || "no-lang";
+
+  return `fingerprint:${userAgent}:${acceptLanguage}`;
 }
 
 function hitRateLimit(key: string) {
