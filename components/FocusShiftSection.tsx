@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function FocusShiftSection({
   items
 }: {
-  items: Array<{ title: string; subtitle: string; image: string }>;
+  items: ReadonlyArray<{ title: string; subtitle: string; image: string }>;
 }) {
   const rootRef = useRef<HTMLDivElement | null>(null);
 
